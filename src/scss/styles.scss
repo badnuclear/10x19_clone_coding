@@ -3,20 +3,20 @@
 * {
   box-sizing: border-box;
 }
-
 body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  padding-top: 70px;
   height: 100vh;
   background-color: $bg;
   display: grid;
-  grid-template-columns: 1.5fr 1.9fr 1.5fr;
-  grid-template-rows: repeat(auto-fill, minmax(100px, 1fr));
-  & > *:not(script) {
+  grid-template-columns: 1.6fr 1.9fr 1.6fr;
+  grid-template-rows: 1fr 5fr 1fr;
+  gap: 1px;
+  & > * {
     background-color: white;
     display: flex;
     justify-content: center;
+    align-items: center;
     color: $bg;
     font-size: 22px;
     text-transform: uppercase;
@@ -25,7 +25,50 @@ body {
     grid-column-start: -2;
   }
   .center-image {
-    grid-column: 2/ -2;
-    grid-row: 2/ -2;
+    grid-column: 2 / -2;
+    grid-row: 2 / -2;
+    background-image: url("https://images.unsplash.com/photo-1608178398319-48f814d0750c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1179&q=80");
+    background-size: cover;
+    background-position: center;
+  }
+  .number__row {
+    background-color: $bg;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1px;
+    height: 100%;
+    align-items: stretch;
+    .number {
+      display: flex;
+      background-color: white;
+      justify-content: center;
+      align-items: center;
+      transition: color 0.3s linear, background-color 0.3s linear;
+      cursor: pointer;
+      &:hover {
+        background-color: $bg;
+        color: white;
+      }
+    }
+  }
+  .scrolling__text {
+    grid-column-start: 2;
+    white-space: nowrap;
+    overflow: hidden;
+    span {
+      animation: scrollText 5s infinite forwards;
+    }
+  }
+}
+
+@keyframes scrollText {
+  0% {
+    transform: translateX(-150px);
+  }
+  50% {
+    transform: translateX(145px);
+  }
+  100% {
+    transform: translateX(-150px);
   }
 }
